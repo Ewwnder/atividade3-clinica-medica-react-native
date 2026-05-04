@@ -1,10 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './src/components/Header';
-import CadastrarClienteScreen from './src/screens/CadastrarClienteScreen';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import Header from "./src/components/Header";
+import CadastrarClienteScreen from "./src/screens/CadastrarClienteScreen";
+import MarcarConsultaScreen from "./src/screens/MarcarConsultaScreen";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <CadastrarClienteScreen></CadastrarClienteScreen>
-  )
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="MarcarConsulta" component={MarcarConsultaScreen} />
+        <Stack.Screen name="ListarCliente" component={CadastrarClienteScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
