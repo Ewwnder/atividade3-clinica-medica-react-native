@@ -143,7 +143,7 @@ export default function MarcarConsultaScreen() {
       </View>
 
       <TouchableOpacity
-        onPress={() => Alert.alert("DANADO!")}
+        onPress={() => navigation.navigate("ListarConsultas" as never)}
         style={styles.botaoMarcar}
       >
         <Text style={{ textAlign: "center", color: "white" }}>
