@@ -6,6 +6,7 @@ import MarcarConsultaScreen from "./src/screens/MarcarConsultaScreen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ListarClienteScreen from "./src/screens/ListarClienteScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="MarcarConsulta" component={MarcarConsultaScreen} />
-        <Stack.Screen name="ListarCliente" component={CadastrarClienteScreen} />
+        <Stack.Screen name="ListarCliente" component={ListarClienteScreen} />
+        <Stack.Screen name="CadastrarCliente" component={CadastrarClienteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
