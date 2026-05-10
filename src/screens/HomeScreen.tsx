@@ -5,6 +5,10 @@ import { styles } from "../styles/HomeStyles";
 export default function HomeScreen({ navigation }: any) {
   const menus = [
     {
+      titulo: "Login",
+      rota: "Login"
+    },
+    {
       titulo: "Cadastrar Cliente",
       rota: "CadastrarCliente",
     },
