@@ -1,16 +1,27 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    container: {
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#B9DFF2",
-        height: 60,
-    },
+  container: {
+    backgroundColor: "#B7D7E8",
+    paddingTop: 50,
+    paddingBottom: 15,
+    paddingHorizontal: 15,
 
-    titulo: {
-        color: "#000",
-        fontSize: 18,
-        fontWeight: "bold"
-    }
-})
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  botaoVoltar: {
+    marginRight: 15,
+  },
+
+  seta: {
+    fontSize: 28,
+    fontWeight: "bold",
+  },
+
+  titulo: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+});
