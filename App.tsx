@@ -9,6 +9,7 @@ import ListagemDeConsultas from "./src/screens/ListagemDeConsultas";
 import ListarClienteScreen from "./src/screens/ListarClienteScreen";
 import EncerrarConsultaScreen from "./src/screens/EncerrarConsultaScreen";
 import RealizerConsultaScreen from "./src/screens/RealizarConsultaScreen";
+import LoginScreen from "./src/screens/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
         
         <Stack.Screen
           name="Home"
