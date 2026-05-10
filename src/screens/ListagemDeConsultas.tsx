@@ -27,17 +27,19 @@ export default function ListagemDeConsultas() {
   ];
 
   const consultas = [
-    { medico: "Ana", paciente: "", horario: "" },
-    { medico: "Bia", paciente: "", horario: "" },
-    { medico: "Caio", paciente: "", horario: "" },
+    { medico: "Ana", paciente: "Jessica", horario: horarios[0].hora },
+    { medico: "Bia", paciente: "Pedro", horario: horarios[2].hora },
+    { medico: "Caio", paciente: "Maria", horario: horarios[1].hora },
   ];
 
   return (
     <View>
       <Header titulo="Listagem de Consultas"></Header>
       <Text>
-        Visualizando as consultas agendadas para o dia
-        {"" + new Date().toLocaleString("pt-BR")}
+        Visualizando as consultas agendadas para o dia{" "}
+        <Text style={{ fontWeight: "bold" }}>
+          {new Date().toLocaleString("pt-BR").slice(0, 10)}
+        </Text>
       </Text>
 
       <Text>Filtros</Text>
@@ -52,8 +54,8 @@ export default function ListagemDeConsultas() {
         onChange={setMedico}
       ></FilterInput>
 
-      <Text>Horário da Consulta</Text>
-      <View style={{ borderWidth: 1, marginTop: 10 }}>
+      <View style={{ borderWidth: 1, margin: 10 }}>
+        <Text style={{ fontWeight: "bold" }}>Horário da Consulta</Text>
         {horarios.map((h, index) => (
           <TouchableOpacity
             key={index}
@@ -68,25 +70,43 @@ export default function ListagemDeConsultas() {
             <Text>{h.hora}</Text>
           </TouchableOpacity>
         ))}
+        <Button title="Aplicar filtros"></Button>
       </View>
-      <Button title="Aplicar filtros"></Button>
 
-      <View>
+      <View style={{ marginVertical: 20 }}>
         <FlatList
+          style={{
+            borderWidth: 1,
+            marginHorizontal: 5,
+            borderRadius: 8,
+            padding: 6,
+          }}
           data={consultas}
           keyExtractor={(item, index) => index.toString()}
           ListHeaderComponent={() => (
-            <View style={{ flexDirection: "row" }}>
-              <Text style={{ flex: 1 }}></Text>
-              <Text style={{ flex: 1 }}>Médico</Text>
-              <Text style={{ flex: 1 }}>Paciente</Text>
-              <Text style={{ flex: 1 }}>Horário</Text>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Text style={{ width: 30, fontWeight: "bold" }}></Text>
+              <Text style={{ flex: 1, fontWeight: "bold" }}>Médico</Text>
+              <Text style={{ flex: 1, fontWeight: "bold" }}>Paciente</Text>
+              <Text style={{ flex: 1, fontWeight: "bold" }}>Horário</Text>
             </View>
           )}
           renderItem={({ item, index }) => {
             const selecionado = consultasSelecionadas.includes(index);
             return (
-              <View style={{ flexDirection: "row" }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <TouchableOpacity
                   onPress={() => toggleSelecionado(index)}
                   style={{
@@ -105,16 +125,44 @@ export default function ListagemDeConsultas() {
           }}
         />
       </View>
-      <Text>
-        OBS: Ao confirmar uma consulta de horário posterior para o mesmo médico,
-        as consultas em horários anteriores não confirmadas serão canceladas
-      </Text>
-      <TouchableOpacity>
-        <Text>CONFIRMAR CONSULTAS SELECIONADAS</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>CANCELAR CONSULTAS SELECIONADAS</Text>
-      </TouchableOpacity>
+
+      <View style={{ margin: 10 }}>
+        <Text style={{ fontWeight: "bold" }}>
+          OBS: Ao confirmar uma consulta de horário posterior para o mesmo
+          médico, as consultas em horários anteriores não confirmadas serão
+          canceladas
+        </Text>
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            height: 50,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "green",
+            marginVertical: 5,
+          }}
+        >
+          <Text style={{ fontWeight: "bold" }}>
+            CONFIRMAR CONSULTAS SELECIONADAS
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            borderWidth: 1,
+            borderRadius: 10,
+            height: 50,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "red",
+            marginVertical: 5,
+          }}
+        >
+          <Text style={{ fontWeight: "bold" }}>
+            CANCELAR CONSULTAS SELECIONADAS
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

@@ -8,9 +8,13 @@ type InputProps = {
 
 export default function FilterInput({ label, value, onChange }: InputProps) {
   return (
-    <View>
-      <Text>{label}</Text>
-      <TextInput value={value} onChangeText={onChange}></TextInput>
+    <View style={{ paddingHorizontal: 5 }}>
+      <Text style={{ fontWeight: "bold" }}>{label}</Text>
+      <TextInput
+        value={value}
+        onChangeText={onChange}
+        style={{ borderColor: "black", borderWidth: 1, width: 400 }}
+      ></TextInput>
     </View>
   );
 }
